@@ -104,7 +104,7 @@ export const Route = createFileRoute("/api/upload/multipart/$id")({
 
           let object: R2Object
           try {
-            object = await env.BUCKET.resumeMultipartUpload(
+            object = await env.BUCKET.head(key) ?? await env.BUCKET.resumeMultipartUpload(
               key,
               uploadId,
             ).complete(parts.sort((a, b) => a.partNumber - b.partNumber))
