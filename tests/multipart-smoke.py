@@ -10,7 +10,7 @@ BASE = os.environ.get('SCREENDROP_URL', 'http://127.0.0.1:3000')
 TOKEN = os.environ['UPLOAD_TOKEN']
 
 def call(method, path, body=None, headers=None, status=200, auth=True):
-    headers = dict(headers or {})
+    headers = {"User-Agent": "ScreendropMultipartSmoke/1.0", **(headers or {})}
     if auth:
         headers['Authorization'] = 'Bearer ' + TOKEN
     if isinstance(body, dict):
