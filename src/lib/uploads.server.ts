@@ -230,7 +230,7 @@ export async function insertUpload(upload: {
     duration: fields.duration,
     title: fields.title,
     socialEnabled: fields.socialEnabled,
-  });
+  }).onConflictDoNothing();
 }
 
 /** Response body shared by every endpoint that creates an upload. */
